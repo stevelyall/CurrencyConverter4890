@@ -74,7 +74,7 @@
    this.resultLabel.Location = new System.Drawing.Point(250, 94);
    this.resultLabel.Name = "resultLabel";
    this.resultLabel.Size = new System.Drawing.Size(127, 23);
-   this.resultLabel.TabIndex = 3;
+   this.resultLabel.TabIndex = 1;
    // 
    // targetCurrencyGroupBox
    // 
@@ -94,11 +94,10 @@
    this.japanRadio.Location = new System.Drawing.Point(17, 119);
    this.japanRadio.Name = "japanRadio";
    this.japanRadio.Size = new System.Drawing.Size(78, 24);
-   this.japanRadio.TabIndex = 3;
+   this.japanRadio.TabIndex = 5;
    this.japanRadio.TabStop = true;
    this.japanRadio.Text = "Japan";
    this.japanRadio.UseVisualStyleBackColor = true;
-   this.japanRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
    // 
    // europeanRadio
    // 
@@ -106,11 +105,10 @@
    this.europeanRadio.Location = new System.Drawing.Point(17, 87);
    this.europeanRadio.Name = "europeanRadio";
    this.europeanRadio.Size = new System.Drawing.Size(184, 24);
-   this.europeanRadio.TabIndex = 2;
+   this.europeanRadio.TabIndex = 4;
    this.europeanRadio.TabStop = true;
    this.europeanRadio.Text = "European community";
    this.europeanRadio.UseVisualStyleBackColor = true;
-   this.europeanRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
    // 
    // canadaRadio
    // 
@@ -118,11 +116,10 @@
    this.canadaRadio.Location = new System.Drawing.Point(17, 57);
    this.canadaRadio.Name = "canadaRadio";
    this.canadaRadio.Size = new System.Drawing.Size(90, 24);
-   this.canadaRadio.TabIndex = 1;
+   this.canadaRadio.TabIndex = 3;
    this.canadaRadio.TabStop = true;
    this.canadaRadio.Text = "Canada";
    this.canadaRadio.UseVisualStyleBackColor = true;
-   this.canadaRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
    // 
    // brazilRadio
    // 
@@ -130,19 +127,18 @@
    this.brazilRadio.Location = new System.Drawing.Point(17, 26);
    this.brazilRadio.Name = "brazilRadio";
    this.brazilRadio.Size = new System.Drawing.Size(73, 24);
-   this.brazilRadio.TabIndex = 0;
+   this.brazilRadio.TabIndex = 2;
    this.brazilRadio.TabStop = true;
    this.brazilRadio.Text = "Brazil";
    this.brazilRadio.UseVisualStyleBackColor = true;
-   this.brazilRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
    // 
    // computeButton
    // 
    this.computeButton.Location = new System.Drawing.Point(306, 176);
    this.computeButton.Name = "computeButton";
    this.computeButton.Size = new System.Drawing.Size(114, 36);
-   this.computeButton.TabIndex = 5;
-   this.computeButton.Text = "Compute";
+   this.computeButton.TabIndex = 6;
+   this.computeButton.Text = "&Compute";
    this.computeButton.UseVisualStyleBackColor = true;
    this.computeButton.Click += new System.EventHandler(this.computeButton_Click);
    // 
@@ -151,25 +147,28 @@
    this.clearButton.Location = new System.Drawing.Point(306, 218);
    this.clearButton.Name = "clearButton";
    this.clearButton.Size = new System.Drawing.Size(114, 36);
-   this.clearButton.TabIndex = 6;
-   this.clearButton.Text = "Clear";
+   this.clearButton.TabIndex = 7;
+   this.clearButton.Text = "C&lear";
    this.clearButton.UseVisualStyleBackColor = true;
    this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
    // 
    // quitButton
    // 
+   this.quitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
    this.quitButton.Location = new System.Drawing.Point(306, 260);
    this.quitButton.Name = "quitButton";
    this.quitButton.Size = new System.Drawing.Size(114, 36);
-   this.quitButton.TabIndex = 7;
-   this.quitButton.Text = "Quit";
+   this.quitButton.TabIndex = 8;
+   this.quitButton.Text = "&Quit";
    this.quitButton.UseVisualStyleBackColor = true;
    this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
    // 
    // CurrencyConverterForm
    // 
+   this.AcceptButton = this.computeButton;
    this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
    this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+   this.CancelButton = this.quitButton;
    this.ClientSize = new System.Drawing.Size(479, 374);
    this.Controls.Add(this.quitButton);
    this.Controls.Add(this.clearButton);

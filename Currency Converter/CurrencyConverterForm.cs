@@ -5,8 +5,8 @@ namespace Currency_Converter
 {
 	public partial class CurrencyConverterForm : Form
 	{
-		private Converter converter = new Converter();
-		private Currency targetCurrency = Currency.BRL;
+		private readonly Converter converter = new Converter();
+		private Currency _targetCurrency = Currency.BRL;
 
 		public CurrencyConverterForm()
 		{
@@ -25,9 +25,20 @@ namespace Currency_Converter
 		{
 			Close();
 		}
-
+		 
+		// TODO numeric only in TextBox
 		private void computeButton_Click(object sender, EventArgs e)
 		{
+			if (amountInput.Text == "")
+			{
+				MessageBox.Show("You must enter an amount to convert.");
+				return;
+			}
+			double toConvert = 0.0;
+			Double.TryParse(amountInput.Text, out toConvert);
+			double result = converter.Convert(_targetCurrency, toConvert);
+			resultLabel.Text = result.ToString("C");
+
 		}
 
 		private void CurrencyConverterForm_Load(object sender, EventArgs e)
@@ -36,21 +47,22 @@ namespace Currency_Converter
 
 		private void currencyRadioButtons_CheckedChanged(object sender, EventArgs e)
 		{
+			resultLabel.Text = "";
 			if (brazilRadio.Checked)
 			{
-				targetCurrency = Currency.BRL;
+				_targetCurrency = Currency.BRL;
 			}
 			else if (canadaRadio.Checked)
 			{
-				targetCurrency = Currency.CAD;
+				_targetCurrency = Currency.CAD;
 			}
 			else if (europeanRadio.Checked)
 			{
-				targetCurrency = Currency.EUR;
+				_targetCurrency = Currency.EUR;
 			}
 			else if (japanRadio.Checked)
 			{
-				targetCurrency = Currency.JPY;
+				_targetCurrency = Currency.JPY;
 			}
 		}
 	}
