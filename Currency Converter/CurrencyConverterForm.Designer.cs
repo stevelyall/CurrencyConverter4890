@@ -98,6 +98,7 @@
    this.japanRadio.TabStop = true;
    this.japanRadio.Text = "Japan";
    this.japanRadio.UseVisualStyleBackColor = true;
+   this.japanRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
    // 
    // europeanRadio
    // 
@@ -109,6 +110,7 @@
    this.europeanRadio.TabStop = true;
    this.europeanRadio.Text = "European community";
    this.europeanRadio.UseVisualStyleBackColor = true;
+   this.europeanRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
    // 
    // canadaRadio
    // 
@@ -120,6 +122,7 @@
    this.canadaRadio.TabStop = true;
    this.canadaRadio.Text = "Canada";
    this.canadaRadio.UseVisualStyleBackColor = true;
+   this.canadaRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
    // 
    // brazilRadio
    // 
@@ -131,6 +134,7 @@
    this.brazilRadio.TabStop = true;
    this.brazilRadio.Text = "Brazil";
    this.brazilRadio.UseVisualStyleBackColor = true;
+   this.brazilRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
    // 
    // computeButton
    // 

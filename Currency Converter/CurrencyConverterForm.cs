@@ -28,13 +28,30 @@ namespace Currency_Converter
 
 		private void computeButton_Click(object sender, EventArgs e)
 		{
-		  
 		}
 
 		private void CurrencyConverterForm_Load(object sender, EventArgs e)
 		{
 		}
 
-		// TODO handle radio button clicks
+		private void currencyRadioButtons_CheckedChanged(object sender, EventArgs e)
+		{
+			if (brazilRadio.Checked)
+			{
+				targetCurrency = Currency.BRL;
+			}
+			else if (canadaRadio.Checked)
+			{
+				targetCurrency = Currency.CAD;
+			}
+			else if (europeanRadio.Checked)
+			{
+				targetCurrency = Currency.EUR;
+			}
+			else if (japanRadio.Checked)
+			{
+				targetCurrency = Currency.JPY;
+			}
+		}
 	}
 }
