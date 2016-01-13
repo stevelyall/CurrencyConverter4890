@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter.cs" />
+    <Compile Include="Currency.cs" />
     <Compile Include="CurrencyConverterForm.cs">
       <SubType>Form</SubType>
     </Compile>
