@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Currency_Converter
@@ -15,6 +16,14 @@ namespace Currency_Converter
 			brazilRadio.Select();
 		}
 
+		private bool isValid(string input)
+		{
+			var pattern =
+				new Regex(
+					@"^\$?\-?([1-9]{1}[0-9]{0,2}(\,\d{3})*(\.\d{0,2})?|[1-9]{1}\d{0,}(\.\d{0,2})?|0(\.\d{0,2})?|(\.\d{1,2}))$|^\-?\$?([1-9]{1}\d{0,2}(\,\d{3})*(\.\d{0,2})?|[1-9]{1}\d{0,}(\.\d{0,2})?|0(\.\d{0,2})?|(\.\d{1,2}))$|^\(\$?([1-9]{1}\d{0,2}(\,\d{3})*(\.\d{0,2})?|[1-9]{1}\d{0,}(\.\d{0,2})?|0(\.\d{0,2})?|(\.\d{1,2}))\)$");
+			return pattern.IsMatch(input);
+		}
+
 		private void clearButton_Click(object sender, EventArgs e)
 		{
 			amountInput.Clear();
@@ -25,20 +34,31 @@ namespace Currency_Converter
 		{
 			Close();
 		}
-		 
-		// TODO numeric only in TextBox
+
 		private void computeButton_Click(object sender, EventArgs e)
 		{
-			if (amountInput.Text == "")
+			var input = amountInput.Text;
+			if (input == "")
 			{
 				MessageBox.Show("You must enter an amount to convert.");
 				return;
 			}
-			double toConvert = 0.0;
-			Double.TryParse(amountInput.Text, out toConvert);
-			double result = converter.Convert(_targetCurrency, toConvert);
-			resultLabel.Text = result.ToString("C");
 
+			if (!isValid(input))
+			{
+				MessageBox.Show("You must enter a valid amount. For example, $2312.12 or 14.50");
+				return;
+			}
+
+			if (input.StartsWith("$"))
+			{
+				input = input.Substring(1, input.Length - 1);
+			}
+
+			var toConvert = 0.0;
+			double.TryParse(input, out toConvert);
+			var result = converter.Convert(_targetCurrency, toConvert);
+			resultLabel.Text = result.ToString("C");
 		}
 
 		private void CurrencyConverterForm_Load(object sender, EventArgs e)
