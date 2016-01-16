@@ -7,13 +7,22 @@ namespace Currency_Converter
 	public partial class CurrencyConverterForm : Form
 	{
 		private readonly Converter converter = new Converter();
-		private Currency _targetCurrency = Currency.BRL;
+		private Currency _targetCurrency;
 
 		public CurrencyConverterForm()
 		{
 			InitializeComponent();
+			setRadioEventListeners();
 			amountInput.Focus();
 			brazilRadio.Select();
+		}
+
+		private void setRadioEventListeners()
+		{
+			this.brazilRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
+			this.canadaRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
+			this.europeanRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
+			this.japanRadio.CheckedChanged += currencyRadioButtons_CheckedChanged;
 		}
 
 		private bool isValid(string input)
@@ -34,7 +43,7 @@ namespace Currency_Converter
 		{
 			Close();
 		}
-
+					       
 		private void computeButton_Click(object sender, EventArgs e)
 		{
 			var input = amountInput.Text;
@@ -58,7 +67,7 @@ namespace Currency_Converter
 			var toConvert = 0.0;
 			double.TryParse(input, out toConvert);
 			var result = converter.Convert(_targetCurrency, toConvert);
-			resultLabel.Text = result.ToString("C");
+			resultLabel.Text = converter.Format(_targetCurrency, result);
 		}
 
 		private void CurrencyConverterForm_Load(object sender, EventArgs e)
@@ -84,6 +93,9 @@ namespace Currency_Converter
 			{
 				_targetCurrency = Currency.JPY;
 			}
+	
 		}
-	}
+
+
+ }
 }

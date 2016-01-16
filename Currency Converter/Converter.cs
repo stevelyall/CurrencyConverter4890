@@ -1,4 +1,8 @@
-﻿namespace Currency_Converter
+﻿using System;
+using System.Diagnostics;
+using System.Globalization;
+
+namespace Currency_Converter
 {
 	internal class Converter
 	{
@@ -30,6 +34,33 @@
 					break;
 			}
 			return amount*convRate;
+		}
+
+		public string Format(Currency targetCurrency, double amount)
+		{
+			String result = "";
+
+			switch (targetCurrency)
+			{
+				case Currency.GBP:
+					result = amount.ToString("C", new CultureInfo("en-GB"));
+					break;
+				case Currency.CAD:
+					result = amount.ToString("C", new CultureInfo("en-CA"));
+					break;
+				case Currency.EUR:
+					result = amount.ToString("C", new CultureInfo("fr-FR"));
+					break;
+				case Currency.BRL:
+					result = amount.ToString("C", new CultureInfo("pt-BR"));
+					break;
+				case Currency.JPY:
+					result = amount.ToString("C", new CultureInfo("jp-JY"));
+					break;
+			  
+			}
+			return result;
+
 		}
 	}
 }
