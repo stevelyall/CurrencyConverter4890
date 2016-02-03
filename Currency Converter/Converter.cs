@@ -6,31 +6,32 @@ namespace Currency_Converter
 {
 	internal class Converter
 	{
-		private const double USD_TO_GBP = 0.69;
-		private const double USD_TO_CAD = 1.42;
-		private const double USD_TO_EUR = 0.92;
-		private const double USD_TO_BRL = 4.03;
-		private const double USD_TO_JPY = 118.29;
+		private RateManager rateManager;
 
-		public double Convert(Currency targetCurrency, double amount)
+	 public Converter()
+	 {
+	  rateManager = new RateManager();
+	 }
+
+  public double Convert(Currency targetCurrency, double amount)
 		{
 			var convRate = 0.0;
 			switch (targetCurrency)
 			{
 				case Currency.GBP:
-					convRate = USD_TO_GBP;
+	 				convRate = rateManager.USDtoGBP;
 					break;
 				case Currency.CAD:
-					convRate = USD_TO_CAD;
+					convRate = rateManager.USDtoCAD;
 					break;
 				case Currency.EUR:
-					convRate = USD_TO_EUR;
+					convRate = rateManager.USDtoEUR;
 					break;
 				case Currency.BRL:
-					convRate = USD_TO_BRL;
+					convRate = rateManager.USDtoBRL;
 					break;
 				case Currency.JPY:
-					convRate = USD_TO_JPY;
+					convRate = rateManager.USDtoJPY;
 					break;
 			}
 			return amount*convRate;
