@@ -40,6 +40,7 @@
    this.computeButton = new System.Windows.Forms.Button();
    this.clearButton = new System.Windows.Forms.Button();
    this.quitButton = new System.Windows.Forms.Button();
+   this.rateSourceLabel = new System.Windows.Forms.Label();
    this.targetCurrencyGroupBox.SuspendLayout();
    this.SuspendLayout();
    // 
@@ -163,6 +164,15 @@
    this.quitButton.UseVisualStyleBackColor = true;
    this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
    // 
+   // rateSourceLabel
+   // 
+   this.rateSourceLabel.AutoSize = true;
+   this.rateSourceLabel.Location = new System.Drawing.Point(18, 345);
+   this.rateSourceLabel.Name = "rateSourceLabel";
+   this.rateSourceLabel.Size = new System.Drawing.Size(127, 20);
+   this.rateSourceLabel.TabIndex = 9;
+   this.rateSourceLabel.Text = "rateSourceLabel";
+   // 
    // CurrencyConverterForm
    // 
    this.AcceptButton = this.computeButton;
@@ -170,6 +180,7 @@
    this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
    this.CancelButton = this.quitButton;
    this.ClientSize = new System.Drawing.Size(479, 374);
+   this.Controls.Add(this.rateSourceLabel);
    this.Controls.Add(this.quitButton);
    this.Controls.Add(this.clearButton);
    this.Controls.Add(this.computeButton);
@@ -202,6 +213,7 @@
   private System.Windows.Forms.Button computeButton;
   private System.Windows.Forms.Button clearButton;
   private System.Windows.Forms.Button quitButton;
+  private System.Windows.Forms.Label rateSourceLabel;
  }
 }
 

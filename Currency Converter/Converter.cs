@@ -1,37 +1,47 @@
-﻿using System;
-using System.Diagnostics;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Currency_Converter
 {
 	internal class Converter
 	{
-		private RateManager rateManager;
+		private readonly RateManager _rateManager;
 
-	 public Converter()
-	 {
-	  rateManager = new RateManager();
-	 }
+		public string RateSourceString
+		{
+			get
+			{
+				if (_rateManager.DateRetrieved == null)
+				{
+					return "Using fixed conversion rates";
+				}
+				return "Using conversion rates for " + _rateManager.DateRetrieved + " from fixer.io";
+			}
+		}
 
-  public double Convert(Currency targetCurrency, double amount)
+		public Converter()
+		{
+			_rateManager = new RateManager();
+		}
+
+		public double Convert(Currency targetCurrency, double amount)
 		{
 			var convRate = 0.0;
 			switch (targetCurrency)
 			{
 				case Currency.GBP:
-	 				convRate = rateManager.USDtoGBP;
+					convRate = _rateManager.USDtoGBP;
 					break;
 				case Currency.CAD:
-					convRate = rateManager.USDtoCAD;
+					convRate = _rateManager.USDtoCAD;
 					break;
 				case Currency.EUR:
-					convRate = rateManager.USDtoEUR;
+					convRate = _rateManager.USDtoEUR;
 					break;
 				case Currency.BRL:
-					convRate = rateManager.USDtoBRL;
+					convRate = _rateManager.USDtoBRL;
 					break;
 				case Currency.JPY:
-					convRate = rateManager.USDtoJPY;
+					convRate = _rateManager.USDtoJPY;
 					break;
 			}
 			return amount*convRate;
@@ -39,7 +49,7 @@ namespace Currency_Converter
 
 		public string Format(Currency targetCurrency, double amount)
 		{
-			String result = "";
+			var result = "";
 
 			switch (targetCurrency)
 			{
@@ -58,10 +68,8 @@ namespace Currency_Converter
 				case Currency.JPY:
 					result = amount.ToString("C", new CultureInfo("jp-JY"));
 					break;
-			  
 			}
 			return result;
-
 		}
 	}
 }

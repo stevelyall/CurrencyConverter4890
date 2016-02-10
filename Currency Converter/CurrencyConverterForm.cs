@@ -15,6 +15,7 @@ namespace Currency_Converter
 			setRadioEventListeners();
 			amountInput.Focus();
 			brazilRadio.Select();
+			rateSourceLabel.Text = converter.RateSourceString;
 		}
 
 		private void setRadioEventListeners()
